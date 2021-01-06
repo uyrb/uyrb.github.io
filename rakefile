@@ -1,0 +1,52 @@
+
+task :default => [:test]
+
+task :test do
+  puts "how to"
+  puts "rake post[title]"
+end
+
+task :post, [:title] do |t, args|
+title = args[:title]
+layout = <<-TTT
+---
+layout: post
+title: #{title}
+tags: [ jekyll ]
+categories: [ default ]
+---
+\n\n\n\n
+TTT
+  file = "./_posts/" + Time.now.strftime("%F") + "-" + title + ".md"
+  if File.exist?(file)
+    puts "file exist" ; exit
+  end
+  open( file , "w").print layout
+  system"atom #{file}"
+end
+
+task :ruby30, [*:a1..:a9] do |t, args|
+  puts c = "C:\\ruby30\\bin\\ruby #{args.map do |k,v| v end.join(' ')}"
+  system"#{c}"
+end
+
+task :jekyll, [*:a1..:a9] do |t, args|
+  puts c = "C:\\ruby\\bin\\jekyll #{args.map do |k,v| v end.join(' ')}"
+  system"#{c}"
+end
+
+
+task :commit , :c do
+  system 'git add *'
+  system 'git commit * -m \"commit\"'
+end
+
+task :commit_push , :cp do
+  system 'git add *'
+  system 'git commit * -m \"commit\"'
+  system 'git push'
+end
+
+task :push , :p do
+  system 'git push origin master'
+end

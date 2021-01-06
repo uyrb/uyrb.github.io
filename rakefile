@@ -48,5 +48,6 @@ task :commit_push , :cp do
 end
 
 task :push , :p do
-  system 'git push origin master'
+#  system 'git push origin master'
+  system 'git push origin HEAD:MAIN'
 end

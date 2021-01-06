@@ -44,7 +44,7 @@ end
 task :commit_push , :cp do
   system 'git add *'
   system 'git commit * -m \"commit\"'
-  system 'git push'
+  system 'git push origin main'
 end
 
 task :push , :p do

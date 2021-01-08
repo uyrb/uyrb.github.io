@@ -12,7 +12,6 @@ layout = <<-TTT
 ---
 layout: post
 title: #{title}
-tags: [ jekyll ]
 categories: [ default ]
 ---
 \n\n\n\n
@@ -36,18 +35,18 @@ task :jekyll, [*:a1..:a9] do |t, args|
 end
 
 
-task :commit , :c do
+task :commit do
   system 'git add *'
   system 'git commit * -m \"commit\"'
 end
 
-task :commit_push , :cp do
+task :commit_push do
   system 'git add *'
   system 'git commit * -m \"commit\"'
   system 'git push origin main'
 end
 
-task :push , :p do
+task :push do
 #  system 'git push origin master'
   system 'git push origin HEAD:MAIN'
 end
